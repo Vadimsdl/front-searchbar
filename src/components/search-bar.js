@@ -6,14 +6,14 @@ import List from './list';
 const SearchBar = () => {
   
   const [search, setSearch] = useState('');
-  const [pers, setPers] = useState([]);
+  const [personage, setPersonage] = useState([]);
   const [select, setSelect] = useState(false);
   const [time, setTime] = useState(null);
 
   const onClear = () => {
     setSearch('');
     setSelect(false);
-    setPers([]);
+    setPersonage([]);
   }
 
   const getSearch = () => {
@@ -24,10 +24,10 @@ const SearchBar = () => {
           getPersonages(search)
             .then((res) => {
               const { data } = res;
-              setPers(data);
+              setPersonage(data);
             });
         }
-        else setPers([]);
+        else setPersonage([]);
       }
     , 400));
   }
@@ -39,7 +39,7 @@ const SearchBar = () => {
     getPersonages(name)
       .then((res) => {
         const { data } = res;
-        setPers(data);
+        setPersonage(data);
     });
   }
 
@@ -59,7 +59,7 @@ const SearchBar = () => {
       </div>
       {search && !select &&
         <ul className="drop-list">
-          {pers?.results?.map( value => {
+          {personage?.results?.map( value => {
             return (
               <li key={value.name} onClick={event => onSelect(event)}>
                 {value.name}
@@ -68,8 +68,8 @@ const SearchBar = () => {
           })}
         </ul>
       }
-      {select && pers.count === 1 &&
-        <List info={pers.results[0]} />
+      {select && personage.count === 1 &&
+        <List info={personage.results[0]} />
       }
     </div>
   );
