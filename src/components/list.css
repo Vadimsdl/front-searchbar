@@ -1,0 +1,13 @@
+.head-info {
+  max-width: 500px;
+  width: 100%;
+  margin: auto;
+}
+.info-status {
+  padding: 10px 0;
+  text-align: left;
+}
+.status {
+  display: inline;
+  margin-right: 10px;
+}
