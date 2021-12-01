@@ -23,8 +23,7 @@ const SearchBar = () => {
         if (search) {
           getPersonages(search)
             .then((res) => {
-              const { data } = res;
-              setPersonage(data);
+              setPersonage(res);
             });
         }
         else setPersonage([]);
@@ -38,8 +37,7 @@ const SearchBar = () => {
     setSearch(name);
     getPersonages(name)
       .then((res) => {
-        const { data } = res;
-        setPersonage(data);
+        setPersonage(res);
     });
   }
 
@@ -59,7 +57,7 @@ const SearchBar = () => {
       </div>
       {search && !select &&
         <ul className="drop-list">
-          {personage?.results?.map( value => {
+          {personage.results?.map( value => {
             return (
               <li key={value.name} onClick={event => onSelect(event)}>
                 {value.name}
